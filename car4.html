@@ -1,0 +1,78 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+    <head>
+        <style>
+        body {
+            background-repeat:no-repeat;
+            text-shadow: 0px 0px 4px black;
+            background-position: 0px 0px;
+            background-attachment: fixed;
+            background-color:#919191;
+            overflow-y:hidden;
+        }
+        .info-area {
+            background-repeat:no-repeat;
+            border-radius: 0px;
+            color: white;
+            font-size:1em;
+            padding: 0px;
+            float: left;
+            height:900px;
+            width:900px;
+            text-shadow: none;
+            position:absolute;
+            top:0px;
+            margin-top:0px;
+            z-index:1;
+        }
+        </style>
+    	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script>
+                // Speex X
+                var speed = 4;
+                // Background image
+                var background_image = 'Untitled-2-01.jpg';
+                var background_image_height = 1013;
+                var background_image_width = 5676;
+                // List of images to deploy
+                // If you do not set 'y', the image will be placed in the middle automatically
+                var info_list = [
+                    {url: 'info_1.png',x: '200', y: '-100'},
+                    {url: 'http://cdn2-www.dogtime.com/assets/uploads/2010/12/puppies.jpg',x: '600', y: '100'},
+                    {url: 'info_3.png',x: '900'},
+                    {url: 'http://cdn1-www.dogtime.com/assets/uploads/gallery/30-impossibly-cute-puppies/impossibly-cute-puppy-2.jpg', x: '1200'},
+                    {url: 'https://www.cesarsway.com/sites/newcesarsway/files/styles/large_article_preview/public/The-stages-of-puppy-growth.jpg?itok=9ptPJwY8', x: '1500', y: '700'},
+                    {url: 'http://cdn2-www.dogtime.com/assets/uploads/2010/12/puppies.jpg',x: '5000', y: '100'},
+                    {url: 'http://cdn2-www.dogtime.com/assets/uploads/2010/12/puppies.jpg',x: '5300', y: '400'},
+                ];
+
+                $(function() {
+                    $(document.body).css('height', background_image_height + 'px')
+                                    .css('width', (background_image_width * (speed-1))+'px')
+                                    .css('background-image', 'url(' + background_image + ')');
+                    window.onscroll = function() {
+                        var speed =5.0
+                        document.body.style.backgroundPosition = (-window.scrollX / speed) + "px " +
+                                                                (-window.scrollY / speed) + "px";
+                    }
+                    info_list.forEach(function(item){
+                        var container = $('<div class="info-area"></div>')
+                            .css('background-image', 'url(' + item.url + ')')
+                            .css('left', (item.x * (speed-1)) + 'px');
+                        if (item.y) {
+                            container.css('top', item.y + 'px');
+                        } else {
+                            container.css('background-position-y', 'center');
+                        }
+                        $(document.body).append(container);
+                    });
+                });
+        </script>
+        <title>Life In the Fast Lane Infographic</title>
+    </head>
+    <body>
+    </body>
+</html>
+
+            
